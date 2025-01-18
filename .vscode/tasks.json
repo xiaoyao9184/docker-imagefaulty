@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "docker: compose up@cpu",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/docker/up@cpu/"
+            },
+            "command": "docker compose -p image-faulty up"
+        },
+        {
+            "label": "docker: build main",
+            "type": "shell",
+            "command": "docker build -t xiaoyao9184/image-faulty:main -f ./docker/build@source/dockerfile ."
+        },
+        {
+            "label": "conda: flask run",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/FaultyImageAPI",
+                "env": {
+                }
+            },
+            "command": [
+                "conda run --no-capture-output -n faulty_api_env flask --app api.py --debug run --port 5000"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "conda: create env",
+            "type": "shell",
+            "command": [
+                "conda env create -f ./environment.yml"
+            ]
+        }
+    ]
+}
