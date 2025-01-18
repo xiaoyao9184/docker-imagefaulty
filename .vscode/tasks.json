@@ -15,6 +15,23 @@
             "command": "docker build -t xiaoyao9184/image-faulty:main -f ./docker/build@source/dockerfile ."
         },
         {
+            "label": "shell: models onnxruntime-server",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "command": [
+                "&& mkdir -p ./cache/onnxruntime-server/image-faulty/corner/v1/",
+                "&& mkdir -p ./cache/onnxruntime-server/image-faulty/empty/v5_24_08_23/",
+                "&& mkdir -p ./cache/onnxruntime-server/image-faulty/post_it/v1/",
+                "&& mkdir -p ./cache/onnxruntime-server/image-faulty/writing_type/v1/",
+                "&& ln -s ../../../../huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91/corner_model.onnx ./cache/onnxruntime-server/image-faulty/corner/v1/model.onnx",
+                "&& ln -s ../../../../huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91/empty_v5_24_08_23.onnx ./cache/onnxruntime-server/image-faulty/empty/v5_24_08_23/model.onnx",
+                "&& ln -s ../../../../huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91/post_it_model.onnx ./cache/onnxruntime-server/image-faulty/post_it/v1/model.onnx",
+                "&& ln -s ../../../../huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91/writing_type_v1.onnx ./cache/onnxruntime-server/image-faulty/writing_type/v1/model.onnx"
+            ]
+        },
+        {
             "label": "huggingface-cli: models download",
             "type": "shell",
             "options": {
