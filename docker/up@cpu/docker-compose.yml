@@ -1,0 +1,10 @@
+
+
+services:
+  image-faulty:
+    image: xiaoyao9184/image-faulty:main
+    container_name: image-faulty-flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./../../FaultyImageAPI/models:/app/models
