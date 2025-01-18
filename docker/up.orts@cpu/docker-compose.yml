@@ -1,0 +1,20 @@
+
+
+services:
+  ort-server:
+    image: kibaes/onnxruntime-server:1.20.1b-linux-cpu
+    container_name: image-faulty-orts
+    environment:
+      - ONNX_SERVER_WORKERS=4
+      - ONNX_SERVER_REQUEST_PAYLOAD_LIMIT=10485760
+      - ONNX_SERVER_MODEL_DIR=/root/.cache/onnxruntime-server/image-faulty
+      - ONNX_SERVER_PREPARE_MODEL=empty:v5_24_08_23 corner:v1 post_it:v1 writing_type:v1
+      - ONNX_SERVER_HTTP_PORT=8080
+      - ONNX_SERVER_SWAGGER_URL_PATH=/api-docs
+      - ONNX_SERVER_LOG_LEVEL=debug
+      - ONNX_SERVER_LOG_FILE=
+      - ONNX_SERVER_ACCESS_LOG_FILE=
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./../../cache:/root/.cache
