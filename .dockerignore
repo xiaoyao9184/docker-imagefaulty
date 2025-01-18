@@ -1,0 +1,7 @@
+FaultyImageAPI/.git/
+FaultyImageAPI/models/
+FaultyImageAPI/.gitignore
+FaultyImageAPI/request.py
+
+# Ignore generated files
+**/*.pyc

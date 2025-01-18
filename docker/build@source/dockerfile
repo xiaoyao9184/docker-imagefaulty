@@ -1,0 +1,27 @@
+
+# default python 3.10 in ubuntu 22.04
+FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libstdc++6 \
+    ca-certificates \
+    python3-setuptools \
+    python3-wheel \
+    python3-pip \
+    unattended-upgrades \
+    && unattended-upgrade \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ./FaultyImageAPI /app
+
+COPY ./flask /workspace/flask
+RUN pip3 install --no-cache-dir \
+    -r /workspace/flask/requirements.txt
+
+EXPOSE 5000
+
+VOLUME /app/models
+
+CMD ["flask", "--app", "api.py", "run"]
