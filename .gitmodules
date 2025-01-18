@@ -1,0 +1,3 @@
+[submodule "FaultyImageAPI"]
+	path = FaultyImageAPI
+	url = https://github.com/DALAI-project/FaultyImageAPI
