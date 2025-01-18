@@ -1,0 +1,60 @@
+
+name: HuggingFace Model Publish commit with branch
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - FaultyImageAPI
+      - .github/workflows/hf-model-commit-branch.yml
+  workflow_dispatch:
+    inputs:
+      commit_id:
+        description: FaultyImageAPI commit id(like 'main' 'cff361d6')
+        required: true
+        default: main
+  schedule:
+    - cron: '0 0 1 */3 *'
+
+jobs:
+  checkout-and-push-hf-model:
+    name: Checkout Github models and push to HuggingFace
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        BRANCH_CHECKOUT:
+          - ${{ github.event.inputs.commit_id || 'main' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Checkout commit
+        run: |
+          cd FaultyImageAPI
+          git checkout ${{ matrix.BRANCH_CHECKOUT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10.14'
+
+      - name: Install huggingface cli
+        uses: BSFishy/pip-action@v1
+        with:
+          packages: huggingface_hub[cli]
+          extra: --user
+
+      - name: Log in to Hugging Face CLI
+        run: huggingface-cli login --token ${{ secrets.HF_TOKEN }}
+
+      - name: Upload models to Hugging Face Models
+        run: huggingface-cli upload-large-folder --repo-type model --revision main ${{ secrets.HF_USERNAME }}/image-faulty ./FaultyImageAPI/models
+
+      - name: Log out from Hugging Face CLI
+        if: always()
+        run: huggingface-cli logout
