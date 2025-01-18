@@ -15,6 +15,24 @@
             "command": "docker build -t xiaoyao9184/image-faulty:main -f ./docker/build@source/dockerfile ."
         },
         {
+            "label": "huggingface-cli: models download",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    // "HF_ENDPOINT": "https://hf-mirror.com",
+                    // "HF_HUB_ETAG_TIMEOUT": "1000",
+                    // "HF_HUB_DOWNLOAD_TIMEOUT": "1000"
+                }
+            },
+            "command": "huggingface-cli download --revision main --cache-dir ./cache/huggingface/hub xiaoyao9184/image-faulty"
+        },
+        {
+            "label": "huggingface-cli: models upload",
+            "type": "shell",
+            "command": "huggingface-cli upload-large-folder --repo-type model --revision main xiaoyao9184/image-faulty ${workspaceFolder}/FaultyImageAPI/models",
+        },
+        {
             "label": "conda: flask run",
             "type": "shell",
             "options": {
