@@ -2,6 +2,22 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "docker: compose up.orts@gpu",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/docker/up.orts@gpu/"
+            },
+            "command": "docker compose -p image-faulty up"
+        },
+        {
+            "label": "docker: compose up.orts@cpu",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/docker/up.orts@cpu/"
+            },
+            "command": "docker compose -p image-faulty up"
+        },
+        {
             "label": "docker: compose up@cpu",
             "type": "shell",
             "options": {
