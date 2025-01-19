@@ -9,6 +9,7 @@ on:
       - gradio/**
       - '!gradio/requirements-gpu.txt'
       - '!gradio/gradio_run.py'
+      - '!gradio/README.md'
       - .github/workflows/hf-space-sync.yml
   workflow_dispatch:
 
