@@ -1,0 +1,14 @@
+
+
+services:
+  image-faulty:
+    image: xiaoyao9184/image-faulty:main
+    container_name: image-faulty-gradio
+    working_dir: /workspace/gradio
+    command: gradio gradio_app.py
+    environment:
+      - MODEL_PATH=/root/.cache/huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91
+    ports:
+      - "7860"
+    volumes:
+      - ./../../cache:/root/.cache
