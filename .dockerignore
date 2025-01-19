@@ -3,5 +3,7 @@ FaultyImageAPI/models/
 FaultyImageAPI/.gitignore
 FaultyImageAPI/request.py
 
+gradio/requirements.txt
+
 # Ignore generated files
 **/*.pyc

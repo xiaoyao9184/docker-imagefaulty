@@ -20,8 +20,16 @@ COPY ./flask /workspace/flask
 RUN pip3 install --no-cache-dir \
     -r /workspace/flask/requirements.txt
 
+COPY ./gradio /workspace/gradio
+RUN pip3 install --no-cache-dir \
+    -r /workspace/gradio/requirements-gpu.txt
+
 EXPOSE 5000
+EXPOSE 7860
 
 VOLUME /app/models
+VOLUME /root/.cache
+
+ENV GRADIO_SERVER_NAME="0.0.0.0"
 
 CMD ["flask", "--app", "api.py", "run"]

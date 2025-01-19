@@ -7,6 +7,7 @@ on:
       - 'main'
     paths:
       - gradio/**
+      - '!gradio/requirements-gpu.txt'
       - .github/workflows/hf-space-sync.yml
   workflow_dispatch:
 

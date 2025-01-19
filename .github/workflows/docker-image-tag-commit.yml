@@ -8,6 +8,8 @@ on:
     paths:
       - FaultyImageAPI
       - flask/**
+      - gradio/**
+      - '!gradio/requirements.txt'
       - docker/build@source/dockerfile
       - .github/workflows/docker-image-tag-commit.yml
   workflow_dispatch:
