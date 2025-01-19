@@ -1,7 +1,7 @@
 onnxruntime==1.20.1 # update ort for work with onnxruntime-gpu together
 torchvision==0.13.0
 Flask==2.2.2
-numpy==1.21.6
+numpy==1.26.4 # update numpy for work with windows RuntimeError: module compiled against API version 0x10 but this version of numpy is 0xe
 pandas==1.3.5
 pdf2image==1.16.0
 pillow==9.2.0
