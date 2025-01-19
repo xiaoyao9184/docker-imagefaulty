@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-setuptools \
     python3-wheel \
     python3-pip \
+    git \
     unattended-upgrades \
     && unattended-upgrade \
     && rm -rf /var/lib/apt/lists/*
@@ -24,12 +25,21 @@ COPY ./gradio /workspace/gradio
 RUN pip3 install --no-cache-dir \
     -r /workspace/gradio/requirements-gpu.txt
 
+COPY ./label /workspace/label
+RUN pip3 install --no-cache-dir \
+    -r /workspace/label/requirements_base.txt \
+    -r /workspace/label/requirements_core.txt
+
 EXPOSE 5000
 EXPOSE 7860
+EXPOSE 9090
 
 VOLUME /app/models
 VOLUME /root/.cache
+VOLUME /workspace/label/.pytest_cache
+# VOLUME /workspace/label/cache.db
 
 ENV GRADIO_SERVER_NAME="0.0.0.0"
+ENV LABEL_STUDIO_URL=http://label-studio:8080
 
 CMD ["flask", "--app", "api.py", "run"]

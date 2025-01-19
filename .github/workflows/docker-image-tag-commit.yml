@@ -11,6 +11,10 @@ on:
       - gradio/**
       - '!gradio/requirements.txt'
       - '!gradio/gradio_run.py'
+      - label/**
+      - '!label/test_image/**'
+      - '!label/.gitignore'
+      - '!label/test_api.py'
       - docker/build@source/dockerfile
       - .github/workflows/docker-image-tag-commit.yml
   workflow_dispatch:

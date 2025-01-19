@@ -6,5 +6,9 @@ FaultyImageAPI/request.py
 gradio/requirements.txt
 gradio/gradio_run.py
 
+label/test_image./
+label/.gitignore
+label/test_api.py
+
 # Ignore generated files
 **/*.pyc
