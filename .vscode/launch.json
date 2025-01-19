@@ -2,6 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debugpy: ort test",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "${workspaceFolder}/ort-server/test.py"
+            ],
+            "env": {
+            },
+            "justMyCode": false
+        },
+        {
             "name": "debugpy: flask run",
             "type": "debugpy",
             "request": "launch",

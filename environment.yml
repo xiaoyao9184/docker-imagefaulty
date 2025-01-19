@@ -11,3 +11,4 @@ dependencies:
 
   - pip:
     - -r ./flask/requirements.txt
+    - -r ./ort-server/requirements-test.txt
