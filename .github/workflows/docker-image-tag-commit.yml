@@ -10,6 +10,7 @@ on:
       - flask/**
       - gradio/**
       - '!gradio/requirements.txt'
+      - '!gradio/gradio_run.py'
       - docker/build@source/dockerfile
       - .github/workflows/docker-image-tag-commit.yml
   workflow_dispatch:

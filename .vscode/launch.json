@@ -2,6 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debugpy: gradio reload",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/gradio/gradio_run.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "${workspaceFolder}/gradio/gradio_app.py"
+            ],
+            "env": {
+                "MODEL_PATH": "${workspaceFolder}/cache/huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91"
+            },
+            "justMyCode": false
+        },
+        {
             "name": "debugpy: ort test",
             "type": "debugpy",
             "request": "launch",
