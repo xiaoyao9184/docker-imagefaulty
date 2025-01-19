@@ -2,6 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "docker: compose up.label@gpu",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/docker/up.label@gpu/"
+            },
+            "command": "docker compose -p image-faulty up"
+        },
+        {
             "label": "docker: compose up.gradio@gpu",
             "type": "shell",
             "options": {
