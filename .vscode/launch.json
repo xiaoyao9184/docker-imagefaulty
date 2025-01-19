@@ -2,6 +2,39 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debugpy: label wsgi",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/label/_wsgi.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/label",
+            "args": [
+                "-d",
+                "-p", "9090"
+            ],
+            "env": {
+                "LABEL_STUDIO_URL": "http://localhost:8080",
+                "LABEL_STUDIO_API_KEY": "label-token",
+                "MODEL_PATH": "${workspaceFolder}/cache/huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "debugpy: label test",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/label",
+            "args": [
+                "${workspaceFolder}/label/test_api.py"
+            ],
+            "env": {
+                "MODEL_PATH": "${workspaceFolder}/cache/huggingface/hub/models--xiaoyao9184--image-faulty/snapshots/3bc9ba7f84a5d8359a34ef3a7d5e9f6bec349d91"
+            },
+            "justMyCode": false
+        },
+        {
             "name": "debugpy: gradio reload",
             "type": "debugpy",
             "request": "launch",
