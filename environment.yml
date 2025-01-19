@@ -13,3 +13,6 @@ dependencies:
     - -r ./flask/requirements.txt
     - -r ./ort-server/requirements-test.txt
     - -r ./gradio/requirements-gpu.txt
+    - -r ./label/requirements_base.txt
+    - -r ./label/requirements_core.txt
+    - -r ./label/requirements_test.txt
