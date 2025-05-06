@@ -16,6 +16,19 @@ def predict_fault(image, model):
     return preds.item()
 
 def detect(image, writing_type, post_it, corner, empty):
+    """
+    Detect features in the image: writing type, post-it notes, corners, and empty.
+
+    Args:
+        image (Union[PIL.Image.Image, str]): The input image, either as a PIL image object or a URL string.
+        writing_type (bool): Whether to detect handwriting type.
+        post_it (bool): Whether to detect post-it notes.
+        corner (bool): Whether to detect corners in the image.
+        empty (bool): Whether to check if the image is empty.
+
+    Returns:
+        dict: A dictionary containing detection results for each enabled option.
+    """
     writing_type_model, post_it_model, corner_model, empty_model = models
     
     res_dict = {}
@@ -89,6 +102,7 @@ writing_type_transforms = transforms.Compose([
 with gr.Blocks(title="Image Faulty Demo") as demo:
     gr.Markdown("""
     # Image Faulty
+    ![](https://badge.mcpx.dev?type=server 'MCP Server')
     Find the project [here](https://github.com/xiaoyao9184/image-faulty).
     """)
 
@@ -110,4 +124,4 @@ with gr.Blocks(title="Image Faulty Demo") as demo:
     )
 
 if __name__ == '__main__':
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, mcp_server=True)

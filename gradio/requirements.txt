@@ -1,7 +1,7 @@
-gradio==5.8.0
+gradio[mcp]==5.28.0
 onnxruntime==1.20.1
 torchvision==0.13.0
 numpy==1.26.4
 
-# fix https://github.com/gradio-app/gradio/issues/10662
-pydantic==2.10.5
+# gradio[mcp] 5.28.0 depends on pydantic>=2.11
+pydantic==2.11.4
