@@ -8,4 +8,4 @@ pillow==10.4.0
 flask-cors==3.0.10
 
 # fix https://stackoverflow.com/a/77214086
-Werkzeug==2.2.2
+Werkzeug==2.3.8
