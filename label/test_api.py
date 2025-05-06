@@ -84,21 +84,21 @@ def test_predict(client, model_dir_env):
     expected_texts = {
         'H',
         'NP',
-        'NC',
+        'C',
         'NE'
     }
     texts_response = set()
     for r in response['results'][0]['result']:
         if r['from_name'] == 'writing_type':
-            assert r['value'] == 'H'
-            texts_response.add(r['value'])
+            assert r['value']['choices'] == ['H']
+            texts_response.add(r['value']['choices'][0])
         elif r['from_name'] == 'post_it':
-            assert r['value'] == 'NP'
-            texts_response.add(r['value'])
+            assert r['value']['choices'] == ['NP']
+            texts_response.add(r['value']['choices'][0])
         elif r['from_name'] == 'corner':
-            assert r['value'] == 'NC'
-            texts_response.add(r['value'])
+            assert r['value']['choices'] == ['C']
+            texts_response.add(r['value']['choices'][0])
         elif r['from_name'] == 'empty':
-            assert r['value'] == 'NE'
-            texts_response.add(r['value'])
+            assert r['value']['choices'] == ['NE']
+            texts_response.add(r['value']['choices'][0])
     assert texts_response == expected_texts
